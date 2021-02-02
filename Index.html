@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Clock 01</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+        body {
+            margin: 0px;
+            width: 100%;
+        }
+
+        main {
+            width: 100%;
+            height: 1080px;
+            position: relative;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+        h1 {
+            width: 100%;
+            margin-top: 15%;
+            position: absolute;
+            font-size: 68px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            color: white;
+            letter-spacing: 3px;
+        }
+
+        #clock {
+            width: 100%;
+            position: absolute;
+            font-size: 65px;
+            text-align: center;
+            color: white;
+            margin-top: 20%;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body onload="RealTime();">
+    <main>
+        <h1>Real Time Clock</h1>
+        <div id="clock"></div>
+        <script>
+            RealTimeClock();
+        </script>
+        <img src="mountain-sunset-nature-landscape_104785-126.jpg" alt="" class="bg-img">
+    </main>
+
+</body>
+
+<script>
+    function RealTimeClock() {
+        var Clock = new Date();
+        var hours = Clock.getHours();
+        var min = Clock.getMinutes();
+        var sec = Clock.getSeconds();
+        var AmPm = (hours < 12) ? 'AM' : 'PM';
+        hours = (hours > 12) ? hours - 12 : hours;
+
+        hours = ("0" + hours).slice(-2);
+        min = ("0" + min).slice(-2);
+        sec = ("0" + sec).slice(-2);
+
+        var RealTime = hours + '   :   ' + min + "   :   " + sec + "    " + AmPm;
+        document.getElementById("clock").innerHTML = RealTime;
+    }
+
+    function RealTime() {
+        setInterval(RealTimeClock, 1000);
+    }
+</script>
+
+</html>
